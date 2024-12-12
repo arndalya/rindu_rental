@@ -271,7 +271,6 @@ blockquote {
   width: 22px;
 }
 .btn .angle_arrow .fa {
-  display: block;
   font-size: 18px;
   line-height: 22px;
   margin: 0;
@@ -1064,7 +1063,7 @@ nav.navbar {
 	3.1. Banner
 -------------------------------*/
 .banner-section {
-  background-image: url("../images/banner-image.jpg");
+  background-image: url("../images/rental.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1900,7 +1899,6 @@ input.newsletter-input {
 .back-top a {
   border-radius: 50%;
   color: #ffffff;
-  display: block;
   font-size: 19px;
   height: 40px;
   line-height: 36px;
@@ -4059,7 +4057,7 @@ table.info-tabel tr td {
   top: 50%;
   width: 32px;
   transform:translateY(-50%)
-   -moz-transform:translateY(-50%);
+   -moz-transform translateY(-50%);
     -o-transform:translateY(-50%);
      -webkit-transform:translateY(-50%);
      -md-transform:translateY(-50%)
