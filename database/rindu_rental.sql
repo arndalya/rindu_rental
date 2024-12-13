@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2022 at 06:23 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.3.33
+-- Generation Time: Dec 13, 2024 at 04:22 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `rental_eria`
+-- Database: `rindu_rental`
 --
 
 -- --------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `admin` (
   `UserName` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
   `updationDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `admin`
@@ -59,7 +59,7 @@ CREATE TABLE `booking` (
   `pickup` varchar(30) NOT NULL,
   `tgl_booking` date NOT NULL,
   `bukti_bayar` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `booking`
@@ -81,7 +81,7 @@ CREATE TABLE `cek_booking` (
   `id_mobil` int(11) NOT NULL,
   `tgl_booking` varchar(10) NOT NULL,
   `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `cek_booking`
@@ -108,7 +108,7 @@ CREATE TABLE `contactus` (
   `pesan` longtext DEFAULT NULL,
   `tgl_posting` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `contactus`
@@ -129,7 +129,7 @@ CREATE TABLE `contactusinfo` (
   `alamat_kami` tinytext DEFAULT NULL,
   `email_kami` varchar(255) DEFAULT NULL,
   `telp_kami` char(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `contactusinfo`
@@ -149,7 +149,7 @@ CREATE TABLE `merek` (
   `nama_merek` varchar(120) NOT NULL,
   `CreationDate` timestamp NULL DEFAULT current_timestamp(),
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `merek`
@@ -158,6 +158,19 @@ CREATE TABLE `merek` (
 INSERT INTO `merek` (`id_merek`, `nama_merek`, `CreationDate`, `UpdationDate`) VALUES
 (14, 'Honda', '2019-06-07 18:05:23', NULL),
 (15, 'MercedesBenz', '2019-06-07 18:29:46', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `merk`
+--
+
+CREATE TABLE `merk` (
+  `id_merk` int(11) NOT NULL,
+  `nama_merk` varchar(120) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `date_motor` timestamp NULL DEFAULT current_timestamp(),
+  `upDate_motor` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -194,7 +207,7 @@ CREATE TABLE `mobil` (
   `LeatherSeats` int(11) DEFAULT NULL,
   `RegDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `mobil`
@@ -208,6 +221,43 @@ INSERT INTO `mobil` (`id_mobil`, `nama_mobil`, `id_merek`, `nopol`, `deskripsi`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `motor`
+--
+
+CREATE TABLE `motor` (
+  `id_motor` int(11) NOT NULL,
+  `nama_motor` varchar(150) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `id_merk` int(11) DEFAULT NULL,
+  `nopol` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `deskripsi` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `harga` int(11) DEFAULT NULL,
+  `bb` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `tahun` int(6) DEFAULT NULL,
+  `seating` int(11) DEFAULT NULL,
+  `image1` varchar(120) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `image2` varchar(120) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `image3` varchar(120) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `image4` varchar(120) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `image5` varchar(120) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `AirConditioner` int(11) DEFAULT NULL,
+  `PowerDoorLocks` int(11) DEFAULT NULL,
+  `AntiLockBrackingSystem` int(11) DEFAULT NULL,
+  `BrakeAssist` int(11) DEFAULT NULL,
+  `PowerSteering` int(11) DEFAULT NULL,
+  `DriverAirbag` int(11) DEFAULT NULL,
+  `PassengerAirbag` int(11) DEFAULT NULL,
+  `PowerWindows` int(11) DEFAULT NULL,
+  `CDPlayer` int(11) DEFAULT NULL,
+  `CentralLocking` int(11) DEFAULT NULL,
+  `CrashSensor` int(11) DEFAULT NULL,
+  `LeatherSeats` int(11) DEFAULT NULL,
+  `RegDate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tblpages`
 --
 
@@ -216,7 +266,7 @@ CREATE TABLE `tblpages` (
   `PageName` varchar(255) DEFAULT NULL,
   `type` varchar(255) NOT NULL DEFAULT '',
   `detail` longtext NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tblpages`
@@ -247,7 +297,7 @@ CREATE TABLE `users` (
   `kk` varchar(120) NOT NULL,
   `RegDate` timestamp NULL DEFAULT current_timestamp(),
   `UpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `users`
@@ -293,10 +343,22 @@ ALTER TABLE `merek`
   ADD PRIMARY KEY (`id_merek`);
 
 --
+-- Indexes for table `merk`
+--
+ALTER TABLE `merk`
+  ADD PRIMARY KEY (`id_merk`);
+
+--
 -- Indexes for table `mobil`
 --
 ALTER TABLE `mobil`
   ADD PRIMARY KEY (`id_mobil`);
+
+--
+-- Indexes for table `motor`
+--
+ALTER TABLE `motor`
+  ADD PRIMARY KEY (`id_motor`);
 
 --
 -- Indexes for table `tblpages`
@@ -339,10 +401,22 @@ ALTER TABLE `merek`
   MODIFY `id_merek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT for table `merk`
+--
+ALTER TABLE `merk`
+  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
   MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `motor`
+--
+ALTER TABLE `motor`
+  MODIFY `id_motor` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tblpages`
