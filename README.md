@@ -1,26 +1,17 @@
-# Rental-Mobil
+# Rindu Rental
 
-Rental Mobil Berbasis website ini memiliki tampilan yang sederhana dan fitur yang mampu berfungsi dengan baik.
+Rental Mobil, Motor, Pick Up berbasis website ini memiliki tampilan yang sederhana dan fitur yang mampu berfungsi dengan baik.
 
 To access admin page, add url /admin. Example http://localhost/rindu_rental/admin
 
-## Tampilan Aplikasi
-
-![ss](images/ss1.png)
-![ss](images/ss2.png)
-![ss](images/ss3.png)
-![ss](images/ss4.png)
-![ss](images/ss5.png)
-![ss](images/ss6.png)
-
 ## Admin Account
 
-| Level |    Username     | Password |
-| :---: | :-------------: | -------: |
-| Admin |      admin      |    admin |
-| User  | yusuf@gmail.com |    yusuf |
+| Level |    Username    | Password |
+| :---: | :------------: | -------: |
+| Admin |     admin      |    ..... |
+| User  | zizi@gmail.com |     .... |
 
 ## Sistem Requirement
 
 - Database MySQL
-- XAMPP / PHP 5.6
+- XAMPP / PHP 8.2

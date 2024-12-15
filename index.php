@@ -53,7 +53,6 @@ error_reporting(0);
   <section id="banner" class="banner-section">
     <div class="container">
       <div class="div_zindex">
-<<<<<<< HEAD:rindu_rental/index.php
 
         <body background="assets/images/banner.png">
           <div class="row">
@@ -63,14 +62,6 @@ error_reporting(0);
                 <p>Kami punya beberapa pilihan untuk Anda. </p>
                 <a href="car-listing.php" class="btn">Selengkapnya <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
               </div>
-=======
-        <div class="row">
-          <div class="col-md-5 col-md-push-7">
-            <div class="banner_content">
-              <h1>Cari Mobil untuk kenyamanan anda.</h1>
-              <p>Kami Punya beberapa pilihan untuk anda. </p>
-              <a href="car-listing.php" class="btn">Selengkapnya <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
->>>>>>> 39d10074ae45aa9444d90cce1ef43f359c8fc3f2:index.php
             </div>
           </div>
       </div>

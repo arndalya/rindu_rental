@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2024 at 04:22 AM
+-- Generation Time: Dec 13, 2024 at 10:32 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -92,6 +92,11 @@ INSERT INTO `cek_booking` (`kode_booking`, `id_mobil`, `tgl_booking`, `status`) 
 ('TRX00002', 9, '2019-05-26', 'Menunggu Pembayaran'),
 ('TRX00002', 9, '2019-05-27', 'Menunggu Pembayaran'),
 ('TRX00000', 11, '2022-09-08', 'Menunggu Pembayaran'),
+('TRX00000', 11, '2022-09-09', 'Menunggu Pembayaran'),
+('TRX00001', 8, '2019-05-26', 'Sudah Dibayar'),
+('TRX00002', 9, '2019-05-26', 'Menunggu Pembayaran'),
+('TRX00002', 9, '2019-05-27', 'Menunggu Pembayaran'),
+('TRX00000', 11, '2022-09-08', 'Menunggu Pembayaran'),
 ('TRX00000', 11, '2022-09-09', 'Menunggu Pembayaran');
 
 -- --------------------------------------------------------
@@ -156,8 +161,12 @@ CREATE TABLE `merek` (
 --
 
 INSERT INTO `merek` (`id_merek`, `nama_merek`, `CreationDate`, `UpdationDate`) VALUES
-(14, 'Honda', '2019-06-07 18:05:23', NULL),
-(15, 'MercedesBenz', '2019-06-07 18:29:46', NULL);
+(17, 'Toyota', '2024-12-13 07:57:35', NULL),
+(18, 'Honda', '2024-12-13 08:24:09', NULL),
+(19, 'Yamaha', '2024-12-13 08:34:25', NULL),
+(20, 'Mitsubishi', '2024-12-13 08:44:32', NULL),
+(21, 'Suzuki', '2024-12-13 08:53:23', NULL),
+(22, 'Daihatsu', '2024-12-13 09:15:37', NULL);
 
 -- --------------------------------------------------------
 
@@ -171,6 +180,14 @@ CREATE TABLE `merk` (
   `date_motor` timestamp NULL DEFAULT current_timestamp(),
   `upDate_motor` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `merk`
+--
+
+INSERT INTO `merk` (`id_merk`, `nama_merk`, `date_motor`, `upDate_motor`) VALUES
+(1, 'Yamaha', '2024-12-13 07:40:43', NULL),
+(2, 'Honda', '2024-12-13 07:43:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -214,9 +231,27 @@ CREATE TABLE `mobil` (
 --
 
 INSERT INTO `mobil` (`id_mobil`, `nama_mobil`, `id_merek`, `nopol`, `deskripsi`, `harga`, `bb`, `tahun`, `seating`, `image1`, `image2`, `image3`, `image4`, `image5`, `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
-(10, 'hondafreed', 14, 'B 7730 NSP', 'Honda Freed 1500 cc transmision automatic seating capacity 6', 450000, 'Bensin', 2012, 6, 'Honda-Freed-front.jpg', 'Honda-Freed-front.jpg', 'Honda-Freed-Interior.jpg', 'Honda-Freed-front.jpg', 'Honda-Freed-Interior.jpg', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2019-06-07 18:09:49', '2019-06-07 18:19:29'),
-(11, 'HondaCrv', 14, 'B 9990 RXY', 'Honda CRV Tahun 2011', 1000000, 'Bensin', 2011, 5, 'Honda-CRV-2011-Front.jpg', 'Honda-CRV-2011-Rear.jpg', 'Honda-CRV-2011-Interior.jpg', 'Honda-CRV-2011-Rear.jpg', 'Honda-CRV-2011-Front.jpg', 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, '2019-06-07 18:27:37', NULL),
-(12, 'MercedesBenzC', 15, 'B 56789 OPX', 'Mercedes Benz C Class 1800 CC', 1850000, 'Bensin', 2012, 5, 'Merci-Cclass-service1.jpg', 'Merci-Cclass-service2.jpg', 'Merci-Cclass-service3.jpg', 'Merci-Cclass-service3.jpg', 'Merci-Cclass-service1.jpg', 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, '2019-06-07 18:32:21', NULL);
+(13, 'Agya', 17, 'BP 1019 YY', '-', 350000, 'Bensin', 0, 5, 'agya1019(8).jpg', 'agya1019(5).jpg', 'agya1019(3).jpg', 'agya1019(10).jpg', 'agya1019(2).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:00:30', NULL),
+(14, 'Agya', 17, 'BP 1436 TJ', '-', 250000, 'Bensin', 0, 4, 'agya1436.jpg', 'agya1436(4).jpg', 'agya1436(6).jpg', 'agya1436(2).jpg', 'agya1436(5).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:10:22', NULL),
+(15, 'Avanza', 17, 'BP 1124 YY', '-', 350000, 'Bensin', 0, 6, 'avanza1124(1).jpg', 'avanza1124(7).jpg', 'avanza1124(8).jpg', 'avanza1124(2).jpg', 'avanza1124(5).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:15:35', NULL),
+(16, 'Avanza', 17, 'BP 1564 TP', '-', 250000, 'Bensin', 0, 5, 'avanza1564(2).jpg', 'avanza1564(5).jpg', 'avanza1564(7).jpg', 'avanza1564(6).jpg', 'avanza1564(8).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:19:27', NULL),
+(17, 'Avanza', 17, 'B 2376 KI', '-', 200000, 'Bensin', 0, 6, 'avanza2376.jpg', 'avanza2376(2).jpg', 'avanza2376(3).jpg', 'avanza2376(4).jpg', 'avanza2376(5).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:22:08', NULL),
+(18, 'Brio', 18, 'BP 1151 RY', '-', 300000, 'Bensin', 0, 4, 'honda_brio1151(1).png', 'honda_brio1151(2).png', 'honda_brio1151(3).png', 'honda_brio1151(4).png', 'honda_brio1151(1).png', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:26:22', NULL),
+(19, 'CBR', 18, 'BP 2624 QJ', 'Motor Sport', 170000, 'Bensin', 0, 2, 'honda_cbr2624(1).jpg', 'honda_cbr2624(2).jpg', 'honda_cbr2624(3).jpg', 'honda_cbr2624(4).jpg', 'honda_cbr2624(5).jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:29:38', NULL),
+(20, 'InnovaReborn', 17, 'BP 1340 AR', '-', 500000, 'Bensin', 0, 5, 'innova1340.jpg', 'innova1340(2).jpg', 'innova1340(3).jpg', 'innova1340(4).jpg', 'innova1340.jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:32:56', NULL),
+(21, 'MioJ', 19, 'BP 4359 BR', 'Schooter Metic', 90000, 'Bensin', 0, 2, 'mio_j4359(1).jpg', 'mio_j4359(3).jpg', 'mio_j4359(1).jpg', 'mio_j4359(3).jpg', 'mio_j4359(1).jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:36:40', '2024-12-13 08:40:13'),
+(22, 'MioJ', 19, 'BP 5272 TF', 'Scooter Matic', 70000, 'Bensin', 0, 2, 'mio5272(2).jpg', 'mio5272(3).jpg', 'mio5272(4).jpg', 'mio5272(2).jpg', 'mio5272(3).jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:38:49', '2024-12-13 08:39:47'),
+(23, 'Mio', 19, 'BP 5744 IB', 'Scooter Metic', 70000, 'Bensin', 0, 2, 'mio5744(2).jpg', 'mio5744(3).jpg', 'mio5744(2).jpg', 'mio5744(3).jpg', 'mio5744(2).jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:41:58', NULL),
+(24, 'Xpander', 20, 'BP 1642 MJ', '-', 400000, 'Bensin', 0, 6, 'mitsubishi_xpander_1642.jpg', 'mitsubishi_xpander_1642(2).jpg', 'mitsubishi_xpander_1642(3).jpg', 'mitsubishi_xpander_1642(7).jpg', 'mitsubishi_xpander_1642(10).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:45:57', NULL),
+(25, 'Xpander', 20, 'BP 1294 MO', '-', 400000, 'Bensin', 0, 6, 'mitsubishi1294(2).jpg', 'mitsubishi1294(3).jpg', 'mitsubishi1294(4).jpg', 'mitsubishi1294(7).jpg', 'mitsubishi1294(8).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:48:31', NULL),
+(26, 'SoulGT', 19, 'BP 5175 MR', 'Motor Metic', 110000, 'Bensin', 0, 2, 'soul_gt5175(1).jpg', 'soul_gt5175(2).jpg', 'soul_gt5175(3).jpg', 'soul_gt5175(1).jpg', 'soul_gt5175(2).jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:51:32', NULL),
+(27, 'PickUp', 21, 'BP 8967 JF', '-', 250000, 'Bensin', 2015, 2, 'suzuki_pickup2015.jpg', 'suzuki_pickup2015(2).jpg', 'suzuki_pickup2015(3).jpg', 'suzuki_pickup2015(4).jpg', 'suzuki_pickup2015.jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:55:56', NULL),
+(28, 'Swift', 21, 'BP 1294 YT', '-', 249998, 'Bensin', 0, 4, 'suzuki_swift1294(1).jpg', 'suzuki_swift1294(2).jpg', 'suzuki_swift1294(3).jpg', 'suzuki_swift1294(5).jpg', 'suzuki_swift1294(1).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 08:59:16', NULL),
+(29, 'Avanza', 17, '0', '-', 200000, 'Bensin', 0, 6, 'toyota_avanza(1).jpg', 'toyota_avanza(2).jpg', 'toyota_avanza(3).jpg', 'toyota_avanza(6).jpg', 'toyota_avanza(7).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 09:11:15', NULL),
+(30, 'Xenia', 22, 'BP 1315 MO', 'Autometic', 250000, 'Bensin', 0, 5, 'xenia_automatic.jpg', 'xenia_automatic.jpg', 'xenia_automatic.jpg', 'xenia_automatic.jpg', 'xenia_automatic.jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 09:17:01', NULL),
+(31, 'Xenia', 22, 'BP 1329 RJ', '-', 350000, 'Bensin', 0, 6, 'xenia1329(1).jpg', 'xenia1329(2).jpg', 'xenia1329(3).jpg', 'xenia1329(8).jpg', 'xenia1329(9).jpg', 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 09:20:12', NULL),
+(32, 'XRide', 19, 'BP 4284 GT', 'Scooter Metic', 110000, 'Bensin', 0, 2, 'xride_4284(2).jpg', 'xride_4284(3).jpg', 'xride_4284(2).jpg', 'xride_4284(3).jpg', 'xride_4284(2).jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 09:23:55', NULL),
+(33, 'XRide', 19, 'BP 4639 BR', 'Scooter Metic', 90000, 'Bensin', 0, 2, 'yamaha4639(2).jpg', 'yamaha4639(3).jpg', 'yamaha4639(2).jpg', 'yamaha4639(3).jpg', 'yamaha4639(2).jpg', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-12-13 09:27:24', NULL);
 
 -- --------------------------------------------------------
 
@@ -398,19 +433,19 @@ ALTER TABLE `contactusinfo`
 -- AUTO_INCREMENT for table `merek`
 --
 ALTER TABLE `merek`
-  MODIFY `id_merek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_merek` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `merk`
 --
 ALTER TABLE `merk`
-  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_merk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `motor`

@@ -2,25 +2,26 @@
 include('includes/config.php');
 include('includes/format_rupiah.php');
 include('includes/library.php');
-$kode=$_GET['kode'];
+$kode = $_GET['kode'];
 $sql1 	= "SELECT booking.*,mobil.*, merek.*, users.* FROM booking,mobil,merek,users WHERE booking.id_mobil=mobil.id_mobil 
 			AND merek.id_merek=mobil.id_merek and booking.email=users.email and booking.kode_booking='$kode'";
-$query1 = mysqli_query($koneksidb,$sql1);
+$query1 = mysqli_query($koneksidb, $sql1);
 $result = mysqli_fetch_array($query1);
 $harga	= $result['harga'];
 $durasi = $result['durasi'];
-$totalmobil = $durasi*$harga;
+$totalmobil = $durasi * $harga;
 $drivercharges = $result['driver'];
-$totalsewa = $totalmobil+$drivercharges;
+$totalsewa = $totalmobil + $drivercharges;
 $tglmulai = strtotime($result['tgl_mulai']);
-$jmlhari  = 86400*1;
-$tgl	  = $tglmulai-$jmlhari;
-$tglhasil = date("Y-m-d",$tgl);
+$jmlhari  = 86400 * 1;
+$tgl	  = $tglmulai - $jmlhari;
+$tglhasil = date("Y-m-d", $tgl);
 
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +29,7 @@ $tglhasil = date("Y-m-d",$tgl);
 	<meta name="description" content="rental mobil">
 	<meta name="author" content="universitas pamulang">
 
-	<title>Cetak Detail Sewa</title>
+	<title>Cetak Detail Rental</title>
 
 	<link href="assets/images/cat-profile.png" rel="icon" type="images/x-icon">
 
@@ -41,7 +42,7 @@ $tglhasil = date("Y-m-d",$tgl);
 
 	<!-- Custom Fonts -->
 	<link href="assets/new/font-awesome.min.css" rel="stylesheet" type="text/css">
-	
+
 	<!-- jQuery -->
 	<script src="assets/new/jquery.min.js"></script>
 
@@ -62,17 +63,6 @@ $tglhasil = date("Y-m-d",$tgl);
 						<td rowspan="3" width="16%" class="text-center">
 							<img src="assets/images/cat-profile.png" alt="logo-dkm" width="80" />
 						</td>
-<<<<<<< Updated upstream
-						<td class="text-center"><h3>Rental Mobil</h3></td>
-						<td rowspan="3" width="16%">&nbsp;</td>
-					</tr>
-					<tr>
-						<td class="text-center"><h2>Rental Mobil</h2></td>
-					</tr>
-					<tr>
-						<td class="text-center">Jl. Kemanggisan Raya No.19, RT.4/RW.13, Kemanggisan, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11480 </td>
-=======
-<<<<<<< HEAD:rindu_rental/detail_cetak.php
 						<td class="text-center">
 							<h3>Rental Kendaraan</h3>
 						</td>
@@ -85,17 +75,6 @@ $tglhasil = date("Y-m-d",$tgl);
 					</tr>
 					<tr>
 						<td class="text-center">Jl. Tugu Pahlawan No.40 (Depan Hotel Tony Lama), Tanjungpinang, Kepulauan Riau, Indonesia. </td>
-=======
-						<td class="text-center"><h3>Rental Mobil</h3></td>
-						<td rowspan="3" width="16%">&nbsp;</td>
-					</tr>
-					<tr>
-						<td class="text-center"><h2>Rental Mobil</h2></td>
-					</tr>
-					<tr>
-						<td class="text-center">Jl. Kemanggisan Raya No.19, RT.4/RW.13, Kemanggisan, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11480 </td>
->>>>>>> 39d10074ae45aa9444d90cce1ef43f359c8fc3f2:detail_cetak.php
->>>>>>> Stashed changes
 					</tr>
 				</tbody>
 			</table>
@@ -112,7 +91,7 @@ $tglhasil = date("Y-m-d",$tgl);
 					<tr>
 						<td width="23%">No. Sewa</td>
 						<td width="2%">:</td>
-						<td><?php echo $result['kode_booking'];?></td>
+						<td><?php echo $result['kode_booking']; ?></td>
 					</tr>
 					<tr>
 						<td>Penyewa</td>
@@ -122,67 +101,60 @@ $tglhasil = date("Y-m-d",$tgl);
 					<tr>
 						<td>Kendaraan</td>
 						<td>:</td>
-						<td><?php echo $result['nama_merek'];echo  ", "; echo $result['nama_mobil']; ?></td>
+						<td><?php echo $result['nama_merek'];
+							echo  ", ";
+							echo $result['nama_mobil']; ?></td>
 					</tr>
 					<tr>
 						<td>Tanggal Mulai</td>
 						<td>:</td>
-						<td><?php echo IndonesiaTgl($result['tgl_mulai']);?></td>
+						<td><?php echo IndonesiaTgl($result['tgl_mulai']); ?></td>
 					</tr>
 					<tr>
 						<td>Tanggal Selesai</td>
 						<td>:</td>
-						<td><?php echo IndonesiaTgl($result['tgl_selesai']);?></td>
+						<td><?php echo IndonesiaTgl($result['tgl_selesai']); ?></td>
 					</tr>
 					<tr>
 						<td>Durasi</td>
 						<td>:</td>
-						<td><?php echo $result['durasi'];?> Hari</td>
+						<td><?php echo $result['durasi']; ?> Hari</td>
 					</tr>
 					<tr>
-<<<<<<< Updated upstream
-						<td>Biaya Mobil (<?php echo $result['durasi'];?>) Hari</td>
-=======
-<<<<<<< HEAD:rindu_rental/detail_cetak.php
 						<td>Biaya Kendaraan (<?php echo $result['durasi']; ?>) Hari</td>
-=======
-						<td>Biaya Mobil (<?php echo $result['durasi'];?>) Hari</td>
->>>>>>> 39d10074ae45aa9444d90cce1ef43f359c8fc3f2:detail_cetak.php
->>>>>>> Stashed changes
 						<td>:</td>
-						<td><?php echo format_rupiah($totalmobil);?></td>
+						<td><?php echo format_rupiah($totalmobil); ?></td>
 					</tr>
 					<tr>
-						<td>Biaya Driver (<?php echo $result['durasi'];?>) Hari</td>
+						<td>Biaya Driver (<?php echo $result['durasi']; ?>) Hari</td>
 						<td>:</td>
-						<td><?php echo format_rupiah($drivercharges);?></td>
+						<td><?php echo format_rupiah($drivercharges); ?></td>
 					</tr>
 					<tr>
-						<td>Total Biaya Sewa (<?php echo $result['durasi'];?>) Hari</td>
+						<td>Total Biaya Sewa (<?php echo $result['durasi']; ?>) Hari</td>
 						<td>:</td>
-						<td><?php echo format_rupiah($totalsewa);?></td>
+						<td><?php echo format_rupiah($totalsewa); ?></td>
 					</tr>
 					<tr>
 						<td>Status</td>
 						<td>:</td>
-						<td><?php echo $result['status'];?></td>
+						<td><?php echo $result['status']; ?></td>
 					</tr>
 					<?php
-						if($result['status']=="Menunggu Pembayaran"){
-							$sqlrek 	= "SELECT * FROM tblpages WHERE id='5'";
-							$queryrek = mysqli_query($koneksidb,$sqlrek);
-							$resultrek = mysqli_fetch_array($queryrek);
+					if ($result['status'] == "Menunggu Pembayaran") {
+						$sqlrek 	= "SELECT * FROM tblpages WHERE id='5'";
+						$queryrek = mysqli_query($koneksidb, $sqlrek);
+						$resultrek = mysqli_fetch_array($queryrek);
 
-							echo "
+						echo "
 						<tr>
 							<td colspan='3'>
-								<b>*Silahkan transfer total biaya sewa ke ".$resultrek['detail']."maksimal tanggal "?> <?php echo IndonesiaTgl($tglhasil);?> <?php echo ".
+								<b>*Silahkan transfer total biaya sewa ke " . $resultrek['detail'] . "maksimal tanggal " ?> <?php echo IndonesiaTgl($tglhasil); ?> <?php echo ".
 							</td>
 						</tr>
 							";
-						}else{
-							
-						}?>
+																																								} else {
+																																								} ?>
 				</tbody>
 			</table>
 		</div><!-- /.container -->
@@ -191,9 +163,9 @@ $tglhasil = date("Y-m-d",$tgl);
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#jumlah').terbilang({
-				'style'			: 3, 
-				'output_div' 	: "jumlah2",
-				'akhiran'		: "Rupiah",
+				'style': 3,
+				'output_div': "jumlah2",
+				'akhiran': "Rupiah",
 			});
 
 			window.print();
@@ -206,4 +178,5 @@ $tglhasil = date("Y-m-d",$tgl);
 	<script src="assets/new/jTerbilang.js"></script>
 
 </body>
+
 </html>
