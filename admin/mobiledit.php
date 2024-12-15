@@ -17,7 +17,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<meta name="author" content="">
 		<meta name="theme-color" content="#3e454c">
 
-		<title>RentalMobil | Admin Edit Info Mobil</title>
+		<title>Rindu Rental | Admin Edit Info Kendaraan</title>
 
 		<!-- Font awesome -->
 		<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -77,12 +77,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 					<div class="row">
 						<div class="col-md-12">
 
-							<h2 class="page-title">Edit Mobil</h2>
+							<h2 class="page-title">Edit Kendaraan</h2>
 
 							<div class="row">
 								<div class="col-md-12">
 									<div class="panel panel-default">
-										<div class="panel-heading">Form Edit Mobil</div>
+										<div class="panel-heading">Form Edit Kendaraan</div>
 										<div class="panel-body">
 											<?php
 											$id = intval($_GET['id']);
@@ -93,7 +93,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 											<form method="post" class="form-horizontal" name="theform" action="mobileditact.php" onsubmit="return valid(this);" enctype="multipart/form-data">
 												<div class="form-group">
-													<label class="col-sm-2 control-label">Nama Mobil<span style="color:red">*</span></label>
+													<label class="col-sm-2 control-label">Nama Kendaraan<span style="color:red">*</span></label>
 													<div class="col-sm-4">
 														<input type="hidden" name="id" class="form-control" value="<?php echo $id; ?>" required>
 														<input type="text" name="vehicletitle" class="form-control" value="<?php echo htmlentities($result['nama_mobil']); ?>" required>
@@ -121,7 +121,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 												<div class="hr-dashed"></div>
 												<div class="form-group">
-													<label class="col-sm-2 control-label">Deskripsi Mobil<span style="color:red">*</span></label>
+													<label class="col-sm-2 control-label">Deskripsi Kendaraan<span style="color:red">*</span></label>
 													<div class="col-sm-4">
 														<textarea class="form-control" name="vehicalorcview" rows="3" required><?php echo htmlentities($result['deskripsi']); ?></textarea>
 													</div>
@@ -164,7 +164,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 												<div class="form-group">
 													<div class="col-sm-12">
-														<h4><b>Gambar Mobil</b></h4>
+														<h4><b>Gambar Kendaraan</b></h4>
 													</div>
 												</div>
 

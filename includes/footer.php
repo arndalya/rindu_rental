@@ -25,12 +25,8 @@ if (isset($_POST['emailsubscibe'])) {
         <div class="col-md-6">
           <h6>Info</h6>
           <ul>
-
-
-            <li><a href="page.php?type=aboutus">About Us</a></li>
-            <li><a href="page.php?type=faqs">FAQs</a></li>
-            <li><a href="page.php?type=privacy">Privacy</a></li>
-            <li><a href="page.php?type=terms">Terms of Use</a></li>
+            <li><a href="page.php?type=privacy">Privacy Policy</a></li>
+            <li><a href="page.php?type=terms">Terms and Conditions</a></li>
             <li><a href="admin/">Admin Login</a></li>
           </ul>
         </div>

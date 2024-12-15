@@ -62,6 +62,7 @@ $tglhasil = date("Y-m-d",$tgl);
 						<td rowspan="3" width="16%" class="text-center">
 							<img src="assets/images/cat-profile.png" alt="logo-dkm" width="80" />
 						</td>
+<<<<<<< Updated upstream
 						<td class="text-center"><h3>Rental Mobil</h3></td>
 						<td rowspan="3" width="16%">&nbsp;</td>
 					</tr>
@@ -70,6 +71,31 @@ $tglhasil = date("Y-m-d",$tgl);
 					</tr>
 					<tr>
 						<td class="text-center">Jl. Kemanggisan Raya No.19, RT.4/RW.13, Kemanggisan, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11480 </td>
+=======
+<<<<<<< HEAD:rindu_rental/detail_cetak.php
+						<td class="text-center">
+							<h3>Rental Kendaraan</h3>
+						</td>
+						<td rowspan="3" width="16%">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="text-center">
+							<h2>Rental Kendaraan</h2>
+						</td>
+					</tr>
+					<tr>
+						<td class="text-center">Jl. Tugu Pahlawan No.40 (Depan Hotel Tony Lama), Tanjungpinang, Kepulauan Riau, Indonesia. </td>
+=======
+						<td class="text-center"><h3>Rental Mobil</h3></td>
+						<td rowspan="3" width="16%">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="text-center"><h2>Rental Mobil</h2></td>
+					</tr>
+					<tr>
+						<td class="text-center">Jl. Kemanggisan Raya No.19, RT.4/RW.13, Kemanggisan, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11480 </td>
+>>>>>>> 39d10074ae45aa9444d90cce1ef43f359c8fc3f2:detail_cetak.php
+>>>>>>> Stashed changes
 					</tr>
 				</tbody>
 			</table>
@@ -94,7 +120,7 @@ $tglhasil = date("Y-m-d",$tgl);
 						<td><?php echo $result['nama_user'] ?></td>
 					</tr>
 					<tr>
-						<td>Mobil</td>
+						<td>Kendaraan</td>
 						<td>:</td>
 						<td><?php echo $result['nama_merek'];echo  ", "; echo $result['nama_mobil']; ?></td>
 					</tr>
@@ -114,7 +140,15 @@ $tglhasil = date("Y-m-d",$tgl);
 						<td><?php echo $result['durasi'];?> Hari</td>
 					</tr>
 					<tr>
+<<<<<<< Updated upstream
 						<td>Biaya Mobil (<?php echo $result['durasi'];?>) Hari</td>
+=======
+<<<<<<< HEAD:rindu_rental/detail_cetak.php
+						<td>Biaya Kendaraan (<?php echo $result['durasi']; ?>) Hari</td>
+=======
+						<td>Biaya Mobil (<?php echo $result['durasi'];?>) Hari</td>
+>>>>>>> 39d10074ae45aa9444d90cce1ef43f359c8fc3f2:detail_cetak.php
+>>>>>>> Stashed changes
 						<td>:</td>
 						<td><?php echo format_rupiah($totalmobil);?></td>
 					</tr>

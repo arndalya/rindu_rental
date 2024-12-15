@@ -3,32 +3,12 @@ session_start();
 error_reporting(0);
 include('includes/config.php');
 include('includes/format_rupiah.php');
+<<<<<<< Updated upstream
+include('includes/library.php');
 
 if(strlen($_SESSION['ulogin'])==0){ 
 	header('location:index.php');
 }else{
-	$tglnow   = date('Y-m-d');
-	$tglmulai = strtotime($tglnow);
-	$jmlhari  = 86400*1;
-	$tglplus	  = $tglmulai+$jmlhari;
-	$now = date("Y-m-d",$tglplus);
-
-if(isset($_POST['submit'])){
-	$fromdate=$_POST['fromdate'];
-	$todate=$_POST['todate'];
-	$driver=$_POST['driver'];
-	$vid=$_POST['vid'];
-	$pickup=$_POST['pickup'];
-//cek
-$sql 	= "SELECT kode_booking FROM cek_booking WHERE tgl_booking between '$fromdate' AND '$todate' AND id_mobil='$vid' AND status!='Cancel'";
-$query 	= mysqli_query($koneksidb,$sql);
-if(mysqli_num_rows($query)>0){
-		echo " <script> alert ('Mobil tidak tersedia di tanggal yang anda pilih, silahkan pilih tanggal lain!'); 
-		</script> ";
-	}else{
-		echo "<script type='text/javascript'> document.location = 'booking_ready.php?vid=$vid&mulai=$fromdate&selesai=$todate&driver=$driver&pickup=$pickup'; </script>";
-	}
-}
 ?>
 <!DOCTYPE HTML>
 <html lang="en">
@@ -38,7 +18,7 @@ if(mysqli_num_rows($query)>0){
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="keywords" content="">
 <meta name="description" content="">
-<title>Mutiara Motor Car Rental Portal</title>
+<title> Rental Mobil</title>
 <!--Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 <!--Custome Style -->
@@ -54,6 +34,60 @@ if(mysqli_num_rows($query)>0){
 <link href="assets/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- SWITCHER -->
+=======
+
+if (strlen($_SESSION['ulogin']) == 0) {
+	header('location:index.php');
+} else {
+	$tglnow   = date('Y-m-d');
+	$tglmulai = strtotime($tglnow);
+	$jmlhari  = 86400 * 1;
+	$tglplus	  = $tglmulai + $jmlhari;
+	$now = date("Y-m-d", $tglplus);
+
+	if (isset($_POST['submit'])) {
+		$fromdate = $_POST['fromdate'];
+		$todate = $_POST['todate'];
+		$driver = $_POST['driver'];
+		$vid = $_POST['vid'];
+		$pickup = $_POST['pickup'];
+		//cek
+		$sql 	= "SELECT kode_booking FROM cek_booking WHERE tgl_booking between '$fromdate' AND '$todate' AND id_mobil='$vid' AND status!='Cancel'";
+		$query 	= mysqli_query($koneksidb, $sql);
+		if (mysqli_num_rows($query) > 0) {
+			echo " <script> alert ('Mobil tidak tersedia di tanggal yang anda pilih, silahkan pilih tanggal lain!'); 
+		</script> ";
+		} else {
+			echo "<script type='text/javascript'> document.location = 'booking_ready.php?vid=$vid&mulai=$fromdate&selesai=$todate&driver=$driver&pickup=$pickup'; </script>";
+		}
+	}
+?>
+	<!DOCTYPE HTML>
+	<html lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<title>Rindu Rental Portal</title>
+		<!--Bootstrap -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+		<!--Custome Style -->
+		<link rel="stylesheet" href="assets/css/style.css" type="text/css">
+		<!--OWL Carousel slider-->
+		<link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
+		<link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
+		<!--slick-slider -->
+		<link href="assets/css/slick.css" rel="stylesheet">
+		<!--bootstrap-slider -->
+		<link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
+		<!--FontAwesome Font Style -->
+		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
+
+		<!-- SWITCHER -->
+>>>>>>> Stashed changes
 		<link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
 		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
 		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
@@ -61,6 +95,7 @@ if(mysqli_num_rows($query)>0){
 		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
 		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
 		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
+<<<<<<< Updated upstream
         
 <!-- Fav and touch icons -->
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
@@ -85,81 +120,96 @@ if(mysqli_num_rows($query)>0){
         
 <!--Header-->
 <?php include('includes/header.php');?>
-<!--Page Header-->
-<!-- /Header --> 
 
-<?php 
-$vid=$_GET['vid'];
-$useremail=$_SESSION['login'];
-$sql1 = "SELECT mobil.*,merek.* FROM mobil,merek WHERE merek.id_merek=mobil.id_merek and mobil.id_mobil='$vid'";
+<?php
+$email=$_SESSION['ulogin'];  
+$sql1 	= "SELECT booking.*,mobil.*, merek.*, users.* FROM booking,mobil,merek,users WHERE booking.id_mobil=mobil.id_mobil 
+			AND merek.id_merek=mobil.id_merek and booking.email=users.email and booking.email='$email'";
 $query1 = mysqli_query($koneksidb,$sql1);
 $result = mysqli_fetch_array($query1);
+$harga	= $result['harga'];
+$durasi = $result['durasi'];
+$totalmobil = $durasi*$harga;
+$drivercharges = $result['driver'];
+$totalsewa = $totalmobil+$drivercharges;
+$tglmulai = strtotime($result['tgl_mulai']);
+$jmlhari  = 86400*1;
+$tgl	  = $tglmulai-$jmlhari;
+$tglhasil = date("Y-m-d",$tgl);
 ?>
-<script type="text/javascript">
-function valid()
-{
-	if(document.sewa.todate.value < document.sewa.fromdate.value){
-		alert("Tanggal selesai harus lebih besar dari tanggal mulai sewa!");
-		return false;
-	}
-	if(document.sewa.fromdate.value < document.sewa.now.value){
-		alert("Tanggal sewa minimal H-1!");
-		return false;
-	}
-
-return true;
-}
-</script>
-
-	<section class="user_profile inner_pages">
+<section class="user_profile inner_pages">
+<center><h3>Riwayat Sewa</h3></center>
 	<div class="container">
-	<div class="col-md-6 col-sm-8">
-	      <div class="product-listing-img"><img src="admin/img/vehicleimages/<?php echo htmlentities($result['image1']);?>" class="img-responsive" alt="Image" /> </a> </div>
-          <div class="product-listing-content">
-            <h5><?php echo htmlentities($result['nama_merek']);?> , <?php echo htmlentities($result['nama_mobil']);?></a></h5>
-            <p class="list-price"><?php echo htmlentities(format_rupiah($result['harga']));?> / Hari</p>
-            <ul>
-              <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result['seating']);?> Seats</li>
-              <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result['tahun']);?> </li>
-              <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result['bb']);?></li>
-            </ul>
-          </div>	
-	</div>
-	
-	<div class="user_profile_info">	
-		<div class="col-md-12 col-sm-10">
-        <form method="post" name="sewa" onSubmit="return valid();"> 
-			<input type="hidden" class="form-control" name="vid"  value="<?php echo $vid;?>"required>
-            <div class="form-group">
-			<label>Tanggal Mulai</label>
-				<input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" required>
-				<input type="hidden" name="now" class="form-control" value="<?php echo $now;?>">
-            </div>
-            <div class="form-group">
-			<label>Tanggal Selesai</label>
-				<input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" required>
-            </div>
-			<div class="form-group">
-			<label>Metode Pickup</label><br/>
-				<select class="form-control" name="pickup" required>
-					<option value="">== Metode Pickup ==</option>
-					<option value="Ambil Sendiri">Ambil Sendiri</option>
-					<option value="Pickup Sesuai Alamat">Pickup Sesuai Alamat</option>
-				</select>
-            </div>
-            <div class="form-group">
-			<label>Driver</label><br/>
-				<input type="radio" name="driver" value="1" checked>Ya &nbsp;
-				<input type="radio" name="driver" value="0">Tidak
-            </div>
-			<br/>			
-			<div class="form-group">
-                <input type="submit" name="submit" value="Cek Ketersediaan" class="btn btn-block">
-            </div>
-        </form>
-		</div>
-		</div>
-      </div>
+	<table class="table table-striped table-bordered">
+	<thead>
+		<tr>    
+			<th width="23" align="center">No</th>
+			<th width="100">Kode Sewa</th>		
+			<th width="132">Nama Mobil</th>
+			<th width="80">Tgl. Mulai</th>
+			<th width="100">Tgl. Selesai</th>
+			<th width="50">Durasi</th>
+			<th width="100">Biaya Mobil</th>
+			<th width="110">Biaya Driver</th>
+			<th width="100">Total Biaya</th>
+			<th width="100">Status</th>
+			<th width="50">Opsi</th>
+		</tr>
+	</thead>
+	<?php
+	$email=$_SESSION['ulogin'];  
+	$sql1 	= "SELECT booking.*,mobil.*, merek.*, users.* FROM booking,mobil,merek,users WHERE booking.id_mobil=mobil.id_mobil 
+			AND merek.id_merek=mobil.id_merek and booking.email=users.email and booking.email='$email'";
+	$query1 = mysqli_query($koneksidb,$sql1);
+	if(mysqli_num_rows($query1)!=0){
+		
+		while($result = mysqli_fetch_array($query1)){
+			$harga	= $result['harga'];
+			$durasi = $result['durasi'];
+			$totalmobil = $durasi*$harga;
+			$drivercharges = $result['driver'];
+			$totalsewa = $totalmobil+$drivercharges;
+			$tglmulai = strtotime($result['tgl_mulai']);
+			$jmlhari  = 86400*1;
+			$tgl	  = $tglmulai-$jmlhari;
+			$tglhasil = date("Y-m-d",$tgl);
+			$nomor++;
+		?>
+			<tr>
+				<td align="center"><?php echo $nomor; ?></td>
+				<td><?php echo $result['kode_booking']; ?></td>
+				<td><?php echo $result['nama_mobil']; ?></td>
+				<td><?php echo IndonesiaTgl($result['tgl_mulai']); ?></td>
+				<td><?php echo IndonesiaTgl($result['tgl_selesai']); ?></td>
+				<td><?php echo $result['durasi']; ?></td>
+				<td><?php echo format_rupiah($totalmobil); ?></td>
+				<td><?php echo format_rupiah($drivercharges); ?></td>
+				<td><?php echo format_rupiah($totalsewa); ?></td>
+				<td><?php echo $result['status']; ?></td>
+				<td align="center">
+				<?php 
+					if($result['status']=="Sudah Dibayar"||$result['status']=="Selesai"){
+					?>
+					<a href="booking_detail.php?kode=<?php echo $result['kode_booking'];?>" class="glyphicon glyphicon-eye-open"></a>
+					<?php 
+					}else{
+					?>
+					<a href="booking_edit.php?kode=<?php echo $result['kode_booking'];?>" class="fa fa-edit"></a>&nbsp;&nbsp;&nbsp;
+					<a href="booking_detail.php?kode=<?php echo $result['kode_booking'];?>" class="glyphicon glyphicon-eye-open"></a>
+					<?php }?>
+				</td>
+			</tr>
+		<?php } ?>
+		
+	<?php
+	}else{
+	?>
+		<tr>
+			<td colspan="11" align="center"><b>Belum ada riwayat sewa.</b></td>
+		</tr>
+<?php }?>
+	</table>
+ </div>
 </section>
 <!--/my-vehicles--> 
 <?php include('includes/footer.php');?>
@@ -177,4 +227,123 @@ return true;
 <script src="assets/js/owl.carousel.min.js"></script>
 </body>
 </html>
+=======
+
+		<!-- Fav and touch icons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/rent-144.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/rent-114.html">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/rent-72.png">
+		<link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/rent-57.png">
+		<link rel="shortcut icon" href="assets/images/favicon-icon/rent.png" />
+		<!-- Google-Font-->
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+	</head>
+
+	<body>
+
+		<!-- Start Switcher -->
+		<?php include('includes/colorswitcher.php'); ?>
+		<!-- /Switcher -->
+
+		<!--Header-->
+		<?php include('includes/header.php'); ?>
+		<!--Page Header-->
+		<!-- /Header -->
+
+		<?php
+		$vid = $_GET['vid'];
+		$useremail = $_SESSION['login'];
+		$sql1 = "SELECT mobil.*,merek.* FROM mobil,merek WHERE merek.id_merek=mobil.id_merek and mobil.id_mobil='$vid'";
+		$query1 = mysqli_query($koneksidb, $sql1);
+		$result = mysqli_fetch_array($query1);
+		?>
+		<script type="text/javascript">
+			function valid() {
+				if (document.sewa.todate.value < document.sewa.fromdate.value) {
+					alert("Tanggal selesai harus lebih besar dari tanggal mulai sewa!");
+					return false;
+				}
+				if (document.sewa.fromdate.value < document.sewa.now.value) {
+					alert("Tanggal sewa minimal H-1!");
+					return false;
+				}
+
+				return true;
+			}
+		</script>
+
+		<section class="user_profile inner_pages">
+			<div class="container">
+				<div class="col-md-6 col-sm-8">
+					<div class="product-listing-img"><img src="admin/img/vehicleimages/<?php echo htmlentities($result['image1']); ?>" class="img-responsive" alt="Image" /> </a> </div>
+					<div class="product-listing-content">
+						<h5><?php echo htmlentities($result['nama_merek']); ?> , <?php echo htmlentities($result['nama_mobil']); ?></a></h5>
+						<p class="list-price"><?php echo htmlentities(format_rupiah($result['harga'])); ?> / Hari</p>
+						<ul>
+							<li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result['seating']); ?> Seats</li>
+							<li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result['tahun']); ?> </li>
+							<li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result['bb']); ?></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="user_profile_info">
+					<div class="col-md-12 col-sm-10">
+						<form method="post" name="sewa" onSubmit="return valid();">
+							<input type="hidden" class="form-control" name="vid" value="<?php echo $vid; ?>" required>
+							<div class="form-group">
+								<label>Tanggal Mulai</label>
+								<input type="date" class="form-control" name="fromdate" placeholder="From Date(dd/mm/yyyy)" required>
+								<input type="hidden" name="now" class="form-control" value="<?php echo $now; ?>">
+							</div>
+							<div class="form-group">
+								<label>Tanggal Selesai</label>
+								<input type="date" class="form-control" name="todate" placeholder="To Date(dd/mm/yyyy)" required>
+							</div>
+							<div class="form-group">
+								<label>Metode Pickup</label><br />
+								<select class="form-control" name="pickup" required>
+									<option value="">== Metode Pickup ==</option>
+									<option value="Ambil Sendiri">Ambil Sendiri</option>
+									<option value="Pickup Sesuai Alamat">Pickup Sesuai Alamat</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Driver</label><br />
+								<input type="radio" name="driver" value="1" checked>Ya &nbsp;
+								<input type="radio" name="driver" value="0">Tidak
+							</div>
+							<br />
+							<div class="form-group">
+								<input type="submit" name="submit" value="Cek Ketersediaan" class="btn btn-block">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/my-vehicles-->
+		<?php include('includes/footer.php'); ?>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="assets/js/interface.js"></script>
+		<!--Switcher-->
+		<script src="assets/switcher/js/switcher.js"></script>
+		<!--bootstrap-slider-JS-->
+		<script src="assets/js/bootstrap-slider.min.js"></script>
+		<!--Slider-JS-->
+		<script src="assets/js/slick.min.js"></script>
+		<script src="assets/js/owl.carousel.min.js"></script>
+	</body>
+
+	</html>
+>>>>>>> Stashed changes
 <?php } ?>

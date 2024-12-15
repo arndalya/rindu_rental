@@ -31,11 +31,11 @@ error_reporting(0);
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="assets/images/favicon-icon/favicon rentcar.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/rent-144.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/rent-114.html">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/rent-72.png">
+  <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/rent-57.png">
+  <link rel="shortcut icon" href="assets/images/favicon-icon/rent.png" />
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 </head>
 
@@ -53,15 +53,26 @@ error_reporting(0);
   <section id="banner" class="banner-section">
     <div class="container">
       <div class="div_zindex">
+<<<<<<< HEAD:rindu_rental/index.php
+
+        <body background="assets/images/banner.png">
+          <div class="row">
+            <div class="col-md-5 col-md-push-7">
+              <div class="banner_content">
+                <h1>Cari Kendaraan untuk kenyamanan Anda.</h1>
+                <p>Kami punya beberapa pilihan untuk Anda. </p>
+                <a href="car-listing.php" class="btn">Selengkapnya <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+              </div>
+=======
         <div class="row">
           <div class="col-md-5 col-md-push-7">
             <div class="banner_content">
               <h1>Cari Mobil untuk kenyamanan anda.</h1>
               <p>Kami Punya beberapa pilihan untuk anda. </p>
               <a href="car-listing.php" class="btn">Selengkapnya <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
+>>>>>>> 39d10074ae45aa9444d90cce1ef43f359c8fc3f2:index.php
             </div>
           </div>
-        </div>
       </div>
     </div>
   </section>
@@ -76,7 +87,7 @@ error_reporting(0);
         <!-- Nav tabs -->
         <div class="recent-tab">
           <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#resentnewcar" role="tab" data-toggle="tab">Yuk, Rental Mobil!</a></li>
+            <li role="presentation" class="active"><a href="#resentnewcar" role="tab" data-toggle="tab">Yuk, Rental Kendaraan!</a></li>
           </ul>
         </div>
 
@@ -120,57 +131,6 @@ error_reporting(0);
   </section>
   <!-- /Resent Car -->
 
-  <!-- Resent Motocycle-->
-  <section class="section-padding gray-bg">
-    <div class="container">
-      <div class="row">
-
-        <!-- Nav tabs -->
-        <div class="recent-tab">
-          <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#resentnewMotocycle" role="tab" data-toggle="tab">Yuk, Rental Motor!</a></li>
-          </ul>
-        </div>
-
-
-        <!-- Recently Listed New Motocycle -->
-        <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="resentnewMotocycle">
-
-            <?php
-            $sql = "SELECT motor.*, merk.* FROM motor, merk WHERE merk.id_merk = motor.id_merk";
-            $query = mysqli_query($koneksidb, $sql);
-            if (mysqli_num_rows($query) > 0) {
-              while ($results = mysqli_fetch_array($query)) {
-
-            ?>
-
-                <div class="col-list-3">
-                  <div class="recent-Motocycle-list">
-                    <div class="Motocycle-info-box"> <a href="vehical-details.php?vhid=<?php echo htmlentities($results['id_motor']); ?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($results['image1']); ?>" class="img-responsive" alt="image"></a>
-                      <ul>
-                        <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($results['bb']); ?></li>
-                        <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($results['tahun']); ?> Model</li>
-                        <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($results['seating']); ?> Seats</li>
-                      </ul>
-                    </div>
-                    <div class="Motocycle-title-m">
-                      <h6><a href="vehical-details.php?vhid=<?php echo htmlentities($results['id_motor']); ?>"><?php echo htmlentities($results['nama_merk']); ?> , <?php echo htmlentities($results['nama_motor']); ?></a></h6>
-                      <span class="price"><?php echo htmlentities(format_rupiah($results['harga'])); ?> /Hari</span>
-                    </div>
-                    <div class="inventory_info_m">
-                      <p><?php echo substr($results['deskripsi'], 0, 70); ?></p>
-                    </div>
-                  </div>
-                </div>
-            <?php }
-            } ?>
-
-          </div>
-        </div>
-      </div>
-  </section>
-  <!-- /Resent Motocycle -->
 
   <!--Footer -->
   <?php include('includes/footer.php'); ?>

@@ -18,7 +18,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<meta name="author" content="">
 		<meta name="theme-color" content="#3e454c">
 
-		<title>Rindu Rental | Admin Kelola Mobil</title>
+		<title>Rindu Rental | Admin Kelola Kendaraan</title>
 
 		<!-- Font awesome -->
 		<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -66,23 +66,23 @@ if (strlen($_SESSION['alogin']) == 0) {
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
-							<h2 class="page-title">Kelola Mobil</h2>
+							<h2 class="page-title">Kelola Kendaraan</h2>
 							<!-- Zero Configuration Table -->
 							<div class="panel panel-default">
-								<div class="panel-heading">Daftar Mobil</div>
+								<div class="panel-heading">Daftar Kendaraan</div>
 								<div class="panel-body">
 									<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
 									<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 										<thead>
 											<tr>
 												<th>No</th>
-												<th>Nama Mobil</th>
+												<th>Nama Kendaraan</th>
 												<th>Merek</th>
 												<th>No. Polisi</th>
 												<th>Harga /Hari</th>
 												<th>Type BB</th>
 												<th>Tahun</th>
-												<th><a href="tambahmobil.php"><span class="fa fa-plus-circle"></span>Tambah Mobil</a></th>
+												<th><a href="tambahmobil.php"><span class="fa fa-plus-circle"></span>Tambah Kendaraan</a></th>
 											</tr>
 										</thead>
 										<tbody>
