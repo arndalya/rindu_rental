@@ -9,6 +9,7 @@ if (strlen($_SESSION['ulogin']) == 0) {
 	header('location:index.php');
 } else {
 	if (isset($_POST['submit'])) {
+
 		$fromdate = $_POST['fromdate'];
 		$todate = $_POST['todate'];
 		$durasi = $_POST['durasi'];
@@ -21,11 +22,17 @@ if (strlen($_SESSION['ulogin']) == 0) {
 		$bukti = "";
 		$cek = 0;
 		$tgl = date('Y-m-d');
+
 		//insert
 		$sql 	= "INSERT INTO booking (kode_booking,id_mobil,tgl_mulai,tgl_selesai,durasi,driver,status,email,pickup,tgl_booking)
 			VALUES('$kode','$vid','$fromdate','$todate','$durasi','$biayadriver','$status','$email','$pickup','$tgl')";
+		echo $sql;
+
+
 		$query 	= mysqli_query($koneksidb, $sql);
+
 		if ($query) {
+
 			for ($cek; $cek < $durasi; $cek++) {
 				$tglmulai = strtotime($fromdate);
 				$jmlhari  = 86400 * $cek;
