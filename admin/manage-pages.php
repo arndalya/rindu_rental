@@ -10,7 +10,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$pagedetails = $_POST['pgedetails'];
 		$sql = "UPDATE tblpages SET detail='$pagedetails' WHERE type='$pagetype'";
 		$query = mysqli_query($koneksidb, $sql);
-		$msg = "Page data updated  successfully";
+		$msg = "Page data updated successfully";
 	}
 
 ?>
