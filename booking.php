@@ -23,7 +23,7 @@ if (strlen($_SESSION['ulogin']) == 0) {
 		$sql 	= "SELECT kode_booking FROM cek_booking WHERE tgl_booking between '$fromdate' AND '$todate' AND id_mobil='$vid' AND status!='Cancel'";
 		$query 	= mysqli_query($koneksidb, $sql);
 		if (mysqli_num_rows($query) > 0) {
-			echo " <script> alert ('Mobil tidak tersedia di tanggal yang anda pilih, silahkan pilih tanggal lain!'); 
+			echo " <script> alert ('Kendaraan tidak tersedia di tanggal yang anda pilih, silahkan pilih tanggal lain!'); 
 		</script> ";
 		} else {
 			echo "<script type='text/javascript'> document.location = 'booking_ready.php?vid=$vid&mulai=$fromdate&selesai=$todate&driver=$driver&pickup=$pickup'; </script>";
