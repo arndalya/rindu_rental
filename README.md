@@ -1,4 +1,4 @@
-Kelompok 4
+Kelompok 4:
 2201020041 Amelia                                                                                                                                                                          2201020019 Arinda Amalia Putri                                                                                                                                                             2201020087 Hanisa                                                                                                                                                                          2201020081 Wulan Novitasari                                                                                                                                                                2201020068 Kirana Putri Fercia
 
 # Rindu Rental
