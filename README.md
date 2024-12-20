@@ -9,7 +9,6 @@ Kelompok 4:
 
 Rental Mobil, Motor, Pick Up berbasis website ini memiliki tampilan yang sederhana dan fitur yang mampu berfungsi dengan baik.
 
-To access admin page, add url /admin. Example http://localhost/rindu_rental/admin
 
 ## Admin Account
 
