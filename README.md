@@ -1,9 +1,9 @@
-**PROJECT AKHIR PIPL
-SISTEM INFORMASI RENTAL KENDARAAN BERBASIS WEBSITE 
+**PROJECT AKHIR PIPL** <br>
+**SISTEM INFORMASI RENTAL KENDARAAN BERBASIS WEBSITE 
 (STUDI KASUS: RINDU RENTAL TANJUNGPINANG)**
 
 
-Kelompok 4:<br>
+_Kelompok 4_:<br>
 2201020041 [Amelia](https://github.com/Mellias)                                                                                                                         
 2201020019 [Arinda Amalia Putri](https://github.com/arndalya)   
 2201020087 [Hanisa](https://github.com/hhanisa07)                                                                                                                      
